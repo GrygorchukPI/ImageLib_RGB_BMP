@@ -83,22 +83,30 @@ int main()
     writer.WriteFile(canvas, "..//YO.bmp");
     */
 
-    //Canvas canvas2(6,5,{255,0,0});
+    //Canvas canvas2(7,9,{255,0,0});
     Canvas canvas2;
     BMP_Reader reader;
     BMP_Reader writer;
 
-    reader.ReadFile(canvas2,"..//Yo.bmp");
+    reader.ReadFile(canvas2,"..//nude.bmp");
+
     /*
-    canvas2.SetPixel(0,0,{0,255,0});
-    canvas2.SetPixel(1,0,{0,255,0});
-    canvas2.SetPixel(2,0,{0,255,0});
-    canvas2.SetPixel(3,0,{0,255,0});
-    canvas2.SetPixel(4,0,{0,255,0});
-    canvas2.SetPixel(5,0,{0,255,0});
+    for(uint32_t h = 0; h < 9; ++h)
+    {
+        for(uint32_t w = 0 ; w < 3; ++w)
+        {
+            canvas2.SetPixel(w, h, RGB{0,0,255});
+        }
+    }
     */
+
+    //canvas2.SetPixel(0, 0, RGB{0,0,255});
+    //canvas2.SetPixel(0, 1, RGB{0,0,255});
+    //canvas2.SetPixel(0, 2, RGB{0,0,255});
     //canvas2.PrintBitmap();
-    canvas2.FlipVertical();
+    //canvas2.FlipVertical();
+    canvas2.FlipHorizontal();
+    //canvas2.SwapPixel(0,0,6,0);
     //canvas2.PrintBitmap();
     writer.WriteFile(canvas2,"..//Yo.bmp");
 

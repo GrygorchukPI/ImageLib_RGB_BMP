@@ -114,6 +114,42 @@ uint32_t Canvas::GetHeight()
     return this->height;
 }
 
+void Canvas::SwapPixel(uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2)
+{
+    uint8_t swapR = 0;
+    uint8_t swapG = 0;
+    uint8_t swapB = 0;
+
+    if(x1 < this->width && y1 < this->height && x2 < this->width && y2 < this->height)
+    {
+        uint32_t i = 3*(this->width * y1 + x1);
+        uint32_t j = 3*(this->width * y2 + x2);
+
+        swapR = this->bitmap[i];
+        swapG = this->bitmap[i+1];
+        swapB = this->bitmap[i+2];
+
+        this->bitmap[i]   = this->bitmap[j];
+        this->bitmap[i+1] = this->bitmap[j+1];
+        this->bitmap[i+2] = this->bitmap[j+2];
+
+        this->bitmap[j]   = swapR;
+        this->bitmap[j+1] = swapG;
+        this->bitmap[j+2] = swapB;
+    }
+}
+
+void Canvas::FlipHorizontal()
+{
+    for(uint32_t h = 0; h < this->height; ++h)
+    {
+        for(uint32_t w = 0; w < this->width/2; ++w)
+        {
+            this->SwapPixel(w, h, this->width - w - 1, h);
+        }
+    }
+}
+
 void Canvas::FlipVertical()
 {
     for(uint32_t i = 0; i < this->height/2; ++i)

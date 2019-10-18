@@ -31,8 +31,8 @@ public:
 
     void RGB_BGR_Switch();//done
 
-    void FlipHorizontal();//not done
-    void FlipVertical();//not done
+    void FlipHorizontal();//done
+    void FlipVertical();//done
 
     void SetWidth(uint32_t in_w);// done
     void SetHeight(uint32_t in_h);// done
@@ -50,7 +50,7 @@ private:
     uint32_t bitmapSize;
 
     void SwapRows(uint32_t i, uint32_t j);
-
+    void SwapPixel(uint32_t x1, uint32_t y1, uint32_t x2, uint32_t y2);
 };
 
 #endif // CANVAS_H
